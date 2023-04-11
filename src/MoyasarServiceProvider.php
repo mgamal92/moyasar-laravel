@@ -2,9 +2,9 @@
 
 namespace MG\Moyasar;
 
+use MG\Moyasar\Commands\MoyasarCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use MG\Moyasar\Commands\MoyasarCommand;
 
 class MoyasarServiceProvider extends PackageServiceProvider
 {
