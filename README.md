@@ -1,4 +1,4 @@
-# 🚀 Moyasar API Integration with Laravel
+# Moyasar Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/mgamal/moyasar-laravel.svg?style=flat-square)](https://packagist.org/packages/mgamal/moyasar-laravel)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/mgamal/moyasar-laravel/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/mgamal/moyasar-laravel/actions?query=workflow%3Arun-tests+branch%3Amain)
