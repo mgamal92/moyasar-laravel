@@ -4,5 +4,5 @@
 return [
     'secret_key' => env('SECRET_KEY'),
 
-    'publishable_key' => env('PUBLISHABLE_KEY')
+    'publishable_key' => env('PUBLISHABLE_KEY'),
 ];
