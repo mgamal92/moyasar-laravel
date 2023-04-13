@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 it('test initiating a new payment', function () {
     Http::fake([
-        '*/payments' => Http::response(['status' => 'initiated', 'amount' => 1000], Response::HTTP_CREATED),
+        '*/payments' => Http::sequence()->push(['status' => 'initiated', 'amount' => 1000])
     ]);
 
     $response = (new Moyasar())->initiate([
@@ -29,7 +29,7 @@ it('test initiating a new payment', function () {
 
 it('test initiating a new payment with wrong data', function () {
     Http::fake([
-        '*/payments' => Http::response(['message' => 'Validation Failed'], Response::HTTP_BAD_REQUEST),
+        '*/payments' => Http::sequence()->push(['message' => 'Validation Failed']),
     ]);
 
     $response = (new Moyasar())->initiate([
