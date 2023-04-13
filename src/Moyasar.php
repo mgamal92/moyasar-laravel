@@ -2,8 +2,8 @@
 
 namespace MG\Moyasar;
 
-use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Client\Response;
+use Illuminate\Support\Facades\Http;
 
 class Moyasar
 {
@@ -12,7 +12,7 @@ class Moyasar
     private function headers(): array
     {
         return [
-            'Authorization' => 'Basic ' . base64_encode(config('moyasar-laravel.secret_key')),
+            'Authorization' => 'Basic '.base64_encode(config('moyasar-laravel.secret_key')),
             'Content-Type' => 'application/x-www-form-urlencoded',
         ];
     }
@@ -22,10 +22,9 @@ class Moyasar
         try {
             return Http::asForm()
                 ->withHeaders($this->headers())
-                ->post(self::BASE_URL . 'payments', $data);
+                ->post(self::BASE_URL.'payments', $data);
         } catch (\Exception $e) {
             dd($e->getMessage());
         }
     }
-
 }

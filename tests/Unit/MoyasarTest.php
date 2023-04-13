@@ -1,12 +1,12 @@
 <?php
 
-use MG\Moyasar\Moyasar;
 use Illuminate\Support\Facades\Http;
+use MG\Moyasar\Moyasar;
 use Symfony\Component\HttpFoundation\Response;
 
 it('test initiating a new payment', function () {
     Http::fake([
-        '*/payments' => Http::response(["status" => "initiated", Response::HTTP_CREATED])
+        '*/payments' => Http::response(['status' => 'initiated', Response::HTTP_CREATED]),
     ]);
 
     $response = (new Moyasar())->initiate([
@@ -27,10 +27,9 @@ it('test initiating a new payment', function () {
 
 });
 
-
 it('test initiating a new payment with wrong data', function () {
     Http::fake([
-        '*/payments' => Http::response(['message' => 'Validation Failed'], Response::HTTP_BAD_REQUEST)
+        '*/payments' => Http::response(['message' => 'Validation Failed'], Response::HTTP_BAD_REQUEST),
     ]);
 
     $response = (new Moyasar())->initiate([
