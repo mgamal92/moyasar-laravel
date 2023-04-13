@@ -6,7 +6,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 it('test initiating a new payment', function () {
     Http::fake([
+<<<<<<< Updated upstream
         '*/payments' => Http::response(['status' => 'initiated', Response::HTTP_CREATED]),
+=======
+        '*/payments' => Http::response(['status' => 'initiated', 'amount' => 1000], Response::HTTP_CREATED),
+>>>>>>> Stashed changes
     ]);
 
     $response = (new Moyasar())->initiate([
@@ -23,7 +27,7 @@ it('test initiating a new payment', function () {
         'callback_url' => 'https://test.com',
     ]);
 
-    expect($response->json())->toHaveKeys(['status']);
+    expect($response->getData()->response)->toHaveKeys(['status', 'amount']);
 
 });
 
@@ -38,7 +42,7 @@ it('test initiating a new payment with wrong data', function () {
             'company' => 'visa',
             'type' => 'creditcard',
             'name' => 'name',
-            'number' => '1010101010',
+            'number' => '1212',
             'cvc' => '123',
             'month' => '03',
             'year' => '30',
@@ -46,6 +50,5 @@ it('test initiating a new payment with wrong data', function () {
         'callback_url' => 'https://test.com',
     ]);
 
-    expect($response->json())->toHaveKeys(['message']);
-
+    expect($response->getData()->response)->toHaveKeys(['message']);
 });

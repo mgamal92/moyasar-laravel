@@ -2,7 +2,12 @@
 
 namespace MG\Moyasar;
 
+<<<<<<< Updated upstream
 use Illuminate\Http\Client\Response;
+=======
+use Exception;
+use Illuminate\Http\JsonResponse;
+>>>>>>> Stashed changes
 use Illuminate\Support\Facades\Http;
 
 class Moyasar
@@ -17,14 +22,26 @@ class Moyasar
         ];
     }
 
-    public function initiate($data): Response
+    public function initiate($data): JsonResponse
     {
         try {
-            return Http::asForm()
+            $response = Http::asForm()
                 ->withHeaders($this->headers())
                 ->post(self::BASE_URL.'payments', $data);
+<<<<<<< Updated upstream
         } catch (\Exception $e) {
             dd($e->getMessage());
+=======
+
+            return response()->json([
+                'response' => $response->json(),
+                'status' => $response->status(),
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ]);
+>>>>>>> Stashed changes
         }
     }
 }
