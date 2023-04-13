@@ -6,11 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 it('test initiating a new payment', function () {
     Http::fake([
-<<<<<<< Updated upstream
-        '*/payments' => Http::response(['status' => 'initiated', Response::HTTP_CREATED]),
-=======
         '*/payments' => Http::response(['status' => 'initiated', 'amount' => 1000], Response::HTTP_CREATED),
->>>>>>> Stashed changes
     ]);
 
     $response = (new Moyasar())->initiate([
