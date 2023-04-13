@@ -2,11 +2,10 @@
 
 use Illuminate\Support\Facades\Http;
 use MG\Moyasar\Moyasar;
-use Symfony\Component\HttpFoundation\Response;
 
 it('test initiating a new payment', function () {
     Http::fake([
-        '*/payments' => Http::sequence()->push(['status' => 'initiated', 'amount' => 1000])
+        '*/payments' => Http::sequence()->push(['status' => 'initiated', 'amount' => 1000]),
     ]);
 
     $response = (new Moyasar())->initiate([
