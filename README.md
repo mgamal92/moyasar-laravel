@@ -30,6 +30,9 @@ This is the contents of the published config file:
 
 ```php
 return [
+    'secret_key' => env('SECRET_KEY'),
+
+    'publishable_key' => env('PUBLISHABLE_KEY'),
 ];
 ```
 
