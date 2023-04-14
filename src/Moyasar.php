@@ -36,7 +36,6 @@ class Moyasar
         }
     }
 
-
     public function update($paymentId): JsonResponse
     {
         try {
