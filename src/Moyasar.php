@@ -35,4 +35,21 @@ class Moyasar
             ]);
         }
     }
+
+
+    public function update($paymentId): JsonResponse
+    {
+        try {
+            $response = Http::withHeaders($this->headers())->put(self::BASE_URL.'payments/'.$paymentId);
+
+            return response()->json([
+                'response' => $response->json(),
+                'status' => $response->status(),
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ]);
+        }
+    }
 }
